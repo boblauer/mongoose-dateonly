@@ -1,7 +1,7 @@
 #dateonly-mongoose
 
-####Provides mongoose support for dates only.
-####This is useful for avoiding time zone issues.
+####Provides mongoose support for dates only.  
+This is useful for avoiding time zone issues.
 
 ##About
 
