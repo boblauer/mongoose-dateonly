@@ -33,7 +33,7 @@ Person.find({ birthday: { $lt: Date.now() } });
 Person.find({ birthday: { $in: [ '1/1/2000', new Date('1/1/2010'), new DateOnly()]}})
 ```
 
-For full implementation details on the `DateOnly` data type, please see the documentation on the [https://github.com/boblauer/dateonly](DateOnly GitHub repo).
+For full implementation details on the `DateOnly` data type, please see the documentation on the [DateOnly GitHub repo](https://github.com/boblauer/dateonly).
 
 ##Test
 npm test
