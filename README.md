@@ -1,7 +1,6 @@
 #dateonly-mongoose
 
-####Provides mongoose support for dates only.  
-This is useful for avoiding time zone issues.
+####Provides Mongoose support for dates only.<br />This is useful for avoiding time zone issues.
 
 ##About
 
@@ -28,7 +27,7 @@ In Mongo, the values above would all be stored as `19990307`.  Because they're n
 
 The `DateOnly` data type supports all of the query conditions you would expect it to:
 
-```
+```javascript
 Person.find({ birthday: '4/7/1990' });
 Person.find({ birthday: { $lt: Date.now() } });
 Person.find({ birthday: { $in: [ '1/1/2000', new Date('1/1/2010'), new DateOnly()]}})
