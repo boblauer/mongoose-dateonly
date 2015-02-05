@@ -1,0 +1,32 @@
+{
+  "name": "mongoose-dateonly",
+  "version": "0.0.0",
+  "description": "Provides mongoose support for dates only, typically to avoid timezone issues.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boblauer/mongoose-dateonly"
+  },
+  "keywords": [
+    "mongoose",
+    "mongo",
+    "dateonly",
+    "date",
+    "timezone"
+  ],
+  "author": "Bob Lauer <rlauer@gmail.com>",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/boblauer/mongoose-dateonly/issues"
+  },
+  "homepage": "https://github.com/boblauer/mongoose-dateonly",
+  "dependencies": {
+    "dateonly": "0.0.3"
+  },
+  "devDependencies": {
+    "mongoose": "^3.8.22"
+  }
+}
