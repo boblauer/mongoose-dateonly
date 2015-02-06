@@ -1,12 +1,8 @@
-#dateonly-mongoose
-
-####Provides Mongoose support for dates only.<br />This is useful for avoiding time zone issues.
-
-##About
+## About ##
 
 This is an implementation of the DateOnly library that works with Mongoose.  This allows you to save dates in Mongo without having to worry about time zones shifting the date.
 
-##Usage
+## Usage ##
 
 ```javascript
 var mongoose = require('mongoose');
@@ -35,5 +31,5 @@ Person.find({ birthday: { $in: [ '1/1/2000', new Date('1/1/2010'), new DateOnly(
 
 For full implementation details on the `DateOnly` data type, please see the documentation on the [DateOnly GitHub repo](https://github.com/boblauer/dateonly).
 
-##Test
+## Test ##
 npm test
