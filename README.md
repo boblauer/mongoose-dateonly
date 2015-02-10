@@ -14,17 +14,17 @@ var PersonSchema = {
 
 ...
 
-var p1 = new Person({ birthday: '4/7/1990' });
-var p2 = new Person({ birthday: new Date('4/7/1990') });
-var p3 = new Person({ birthday: new DateOnly('4/7/1999') });
+var p1 = new Person({ birthday: '4/7/1995' });
+var p2 = new Person({ birthday: new Date('4/7/1995') });
+var p3 = new Person({ birthday: new DateOnly('4/7/1995') });
 ```
 
-In Mongo, the values above would all be stored as `19990307`.  Because they're not stored as conventional `Date` objects, they are not subject to time zone shifts.  In other words, no matter what time zone a user is in, this date will always be 4/7/1990.
+In Mongo, the values above would all be stored as `19950307`.  Because they're not stored as conventional `Date` objects, they are not subject to time zone shifts.  In other words, no matter what time zone a user is in, this date will always be 4/7/1995.
 
 The `DateOnly` data type supports all of the query conditions you would expect it to:
 
 ```javascript
-Person.find({ birthday: '4/7/1990' });
+Person.find({ birthday: '4/7/1995' });
 Person.find({ birthday: { $lt: Date.now() } });
 Person.find({ birthday: { $in: [ '1/1/2000', new Date('1/1/2010'), new DateOnly()]}})
 ```
