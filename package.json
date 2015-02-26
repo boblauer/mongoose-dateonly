@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/boblauer/mongoose-dateonly",
   "dependencies": {
-    "dateonly": "1.0.x"
+    "dateonly": "1.x"
   },
   "devDependencies": {
     "mongoose": "^3.8.22"
