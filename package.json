@@ -1,6 +1,6 @@
 {
   "name": "mongoose-dateonly",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Provides mongoose support for dates only, typically to avoid timezone issues.",
   "main": "index.js",
   "scripts": {
