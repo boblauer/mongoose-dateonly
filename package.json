@@ -27,6 +27,6 @@
     "dateonly": "1.x"
   },
   "devDependencies": {
-    "mongoose": "^3.8.22"
+    "mocha": "^4.0.1"
   }
 }
