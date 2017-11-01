@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "6"
+services:
+  - mongodb
+env:
+  matrix:
+    - MONGOOSE_VERSION=4.x
+    - MONGOOSE_VERSION=3.8
+install:
+  - npm i mongoose@$MONGOOSE_VERSION && npm i
+script:
+- npm test

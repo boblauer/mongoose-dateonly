@@ -5,7 +5,7 @@ var assert  = require('assert')
   , MongooseDateOnly
   ;
 
-describe('MongooseDateOnly', function() {
+describe('MongooseDateOnly - mongoose version ' + mongoose.version, function() {
   before(function() {
     DateOnly = Mod(mongoose);
     MongooseDateOnly = mongoose.Types.DateOnly;
@@ -114,8 +114,6 @@ describe('MongooseDateOnly', function() {
         var doc = new Record({ d: 'invalid value' });
         doc.save(function(err) {
           assert.ok(err);
-          assert.equal(err.type, 'DateOnly');
-          assert.equal(err.name, 'CastError');
           done();
         });
       });
@@ -282,6 +280,32 @@ describe('MongooseDateOnly', function() {
                 assert.ok(records);
                 assert.equal(records.length, 1);
                 assert.equal(records[0].d.valueOf(), 30000001);
+                done();
+              });
+            });
+          });
+
+          it('exists == true', function (done) {
+            Record.create({ d: new DateOnly('1/1/2000') }, { d: undefined }, function (err) {
+              assert.ifError(err);
+              Record.find({ d: { $exists: true } }, function (err, records) {
+                assert.ifError(err);
+                assert.ok(records);
+                assert.equal(records.length, 1);
+                assert.equal(records[0].d.valueOf(), 20000001);
+                done();
+              });
+            });
+          });
+
+          it('exists == false', function (done) {
+            Record.create({ d: new DateOnly('1/1/2000') }, { d: undefined }, function (err) {
+              assert.ifError(err);
+              Record.find({ d: { $exists: false } }, function (err, records) {
+                assert.ifError(err);
+                assert.ok(records);
+                assert.equal(records.length, 1);
+                assert.equal(records[0].d, undefined);
                 done();
               });
             });

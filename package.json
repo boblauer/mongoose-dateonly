@@ -1,10 +1,10 @@
 {
   "name": "mongoose-dateonly",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Provides mongoose support for dates only, typically to avoid timezone issues.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,6 @@
     "dateonly": "1.x"
   },
   "devDependencies": {
-    "mongoose": "^3.8.22"
+    "mocha": "^4.0.1"
   }
 }

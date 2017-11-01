@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/boblauer/mongoose-dateonly.svg?branch=fix-exists)](https://travis-ci.org/boblauer/mongoose-dateonly)
+
 ## About ##
 
 This is an implementation of the DateOnly library that works with Mongoose.  This allows you to save dates in Mongo without having to worry about time zones shifting the date.
