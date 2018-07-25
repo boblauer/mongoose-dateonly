@@ -5,6 +5,8 @@ var assert  = require('assert')
   , MongooseDateOnly
   ;
 
+// mongoose.set('debug', true);
+
 describe('MongooseDateOnly - mongoose version ' + mongoose.version, function() {
   before(function() {
     DateOnly = Mod(mongoose);
@@ -48,13 +50,12 @@ describe('MongooseDateOnly - mongoose version ' + mongoose.version, function() {
     var db, schema, Record, id;
 
     before(function(done) {
-      db = mongoose.createConnection('localhost', 'mongoose_dateonly');
+      db = mongoose.createConnection('mongodb://localhost:27017/mongoose_dateonly', { useNewUrlParser: true });
       db.once('open', function() {
         schema = new mongoose.Schema({
           d: DateOnly,
           docs: [{ d: DateOnly }]
         });
-
         Record = db.model('MDateOnly', schema);
         done();
       });
@@ -127,6 +128,24 @@ describe('MongooseDateOnly - mongoose version ' + mongoose.version, function() {
           });
         });
 
+        it('save with null', function(done) {
+          var r = new Record({ d: null });
+          r.save(function(err) {
+            assert.ifError(err);
+            assert.equal(r.d, null);
+            done();
+          });
+        });
+
+        it('save with undefined', function(done) {
+          var r = new Record({ d: undefined });
+          r.save(function(err) {
+            assert.ifError(err);
+            assert.equal(r.d, undefined);
+            done();
+          });
+        });
+
         it('update', function(done) {
           var r = new Record({ d: new DateOnly('1/1/2000') });
           r.save(function(err) {
@@ -138,6 +157,38 @@ describe('MongooseDateOnly - mongoose version ' + mongoose.version, function() {
               assert.ifError(err);
               assert.equal(r.d.valueOf(), 30000001);
               done();
+            });
+          });
+        });
+
+        it('update with null', function(done) {
+          var r = new Record({ d: new DateOnly('1/1/2000') });
+          r.save(function(err) {
+            assert.ifError(err);
+            assert.equal(r.d.valueOf(), 20000001);
+            r.update({ d: null }, function(err) {
+              assert.ifError(err);
+              Record.findById(r.id, function(err, r2) {
+                assert.ifError(err);
+                assert.equal(r2.d, null);
+                done();
+              });
+            });
+          });
+        });
+
+        it('update with undefined', function(done) {
+          var r = new Record({ d: new DateOnly('1/1/2000') });
+          r.save(function(err) {
+            assert.ifError(err);
+            assert.equal(r.d.valueOf(), 20000001);
+            r.update({ d: undefined }, function(err) {
+              assert.ifError(err);
+              Record.findById(r.id, function(err, r2) {
+                assert.ifError(err);
+                assert.equal(r2.d, undefined);
+                done();
+              });
             });
           });
         });
