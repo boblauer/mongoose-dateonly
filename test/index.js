@@ -5,8 +5,6 @@ var assert  = require('assert')
   , MongooseDateOnly
   ;
 
-// mongoose.set('debug', true);
-
 describe('MongooseDateOnly - mongoose version ' + mongoose.version, function() {
   before(function() {
     DateOnly = Mod(mongoose);
