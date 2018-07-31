@@ -256,6 +256,21 @@ describe('MongooseDateOnly - mongoose version ' + mongoose.version, function() {
             });
           });
 
+          it('equal', function(done) {
+            var date = new DateOnly('1/1/2000');
+            var otherDate = new DateOnly('1/1/2000');
+            Record.create({ d: date }, { d: new DateOnly() }, function(err) {
+              assert.ifError(err);
+              Record.find({ d: { $eq: otherDate } }, function(err, records) {
+                assert.ifError(err);
+                assert.ok(records);
+                assert.equal(records.length, 1);
+                assert.equal(records[0].d.valueOf(), date.valueOf());
+                done();
+              });
+            });
+          });
+
           it('less than', function(done) {
             var date = new DateOnly('1/1/2000');
             Record.create({ d: date }, { d: new DateOnly() }, function(err) {
