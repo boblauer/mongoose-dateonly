@@ -21,7 +21,7 @@ var p2 = new Person({ birthday: new Date('4/7/1995') });
 var p3 = new Person({ birthday: new DateOnly('4/7/1995') });
 ```
 
-In Mongo, the values above would all be stored as `19950307`.  Because they're not stored as conventional `Date` objects, they are not subject to time zone shifts.  In other words, no matter what time zone a user is in, this date will always be 4/7/1995.
+In Mongo, the values above would all be stored as `19950407`.  Because they're not stored as conventional `Date` objects, they are not subject to time zone shifts.  In other words, no matter what time zone a user is in, this date will always be 4/7/1995.
 
 The `DateOnly` data type supports all of the query conditions you would expect it to:
 
